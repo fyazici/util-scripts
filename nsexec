@@ -1,0 +1,5 @@
+#!/bin/sh
+NS=$1
+shift
+/bin/ip netns exec $NS \
+    /usr/bin/sudo -u "#$SUDO_UID" -g "#$SUDO_GID" XDG_RUNTIME_DIR="/run/user/$SUDO_UID" -- "$@"

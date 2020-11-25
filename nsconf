@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "Killing processes in namespace $1"
+PIDS=$(ip netns pids $1)
+for p in $PIDS; do
+	kill -9 $p
+done
+
+echo "Linking device $2 to namespace $1"
+ip link set dev "$2" netns "$1"
+
+echo "Starting up dhclient on namespace $1 for device $2"
+ip netns exec "$1" dhclient "$2"
+
