@@ -1,0 +1,7 @@
+#!/bin/sh
+
+synclient \
+	RightEdge=1150 \
+	CornerCoasting=1 \
+	HorizTwoFingerScroll=1 \
+	TapButton3=2

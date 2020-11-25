@@ -1,0 +1,10 @@
+#!/bin/sh
+
+TOUCH_NEW=$(synclient -l | grep TouchpadOff | awk '{print 1-$3}')
+synclient TouchpadOff=$TOUCH_NEW
+if [ $TOUCH_NEW -eq "1" ]
+then
+  notify-send -t 1 -i info "Touchpad disabled"
+else
+  notify-send -t 1 -i info "Touchpad enabled"
+fi
